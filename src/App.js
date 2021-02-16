@@ -5,10 +5,10 @@ import Home from './component/home';
 import Form from './component/form';
 import Error from './component/error';
 import { createStore } from 'redux';
-import reducer from './reducer/reducer';
 import { Provider } from 'react-redux';
+import allReducer from "./reducer/rootReducer";
 
-const store = createStore(reducer);
+const store = createStore(allReducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const App = () => (
   <Provider store={store}>

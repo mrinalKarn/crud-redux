@@ -2,14 +2,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { addData } from './../action/action';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux'; not working
+import { useDispatch } from "react-redux";
+import {useSelector} from 'react-redux';
 
-import { createStore } from 'redux';
-import reducer from './../reducer/reducer';
-
-const store = createStore(reducer);
 
 const Form = (props) => {
+    const dispatch = useDispatch();
+    const data = useSelector(state=>state);
+
     var handleSubmit = (e) => {
        
         e.preventDefault();
@@ -23,8 +24,8 @@ const Form = (props) => {
             rating: "4.5"
         }
 
-        store.dispatch(addData(object_1));
-        console.log(store.getState());
+        dispatch(addData(object_1));
+        console.log(data);
     }
 
     return (
@@ -35,4 +36,19 @@ const Form = (props) => {
     );
 }
 
-export default (Form);
+// const mapStateToProps = (state) => { not working
+//     return {
+//       posts: state
+//     };
+//   };
+
+//   const mapDispatchToProps = dispatch => { not working
+//     return {
+//       addItem: (obj) => {
+//         dispatch(addData(obj))
+//       }
+//     };
+//   };
+  
+//   export default connect(mapStateToProps,mapDispatchToProps)(Form); not working
+export default Form;
