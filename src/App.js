@@ -7,6 +7,7 @@ import Error from './component/error';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import allReducer from "./reducer/rootReducer";
+import './App.css';
 
 const store = createStore(allReducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 

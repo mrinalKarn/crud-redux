@@ -1,19 +1,20 @@
 // Done with empty state and then with some default state value
 // Successfully checked the action creator, action, dispatch, reducer and store
+var uniqid = require('uniqid');
 
 const initialState = [
     {
-        id: 11,
+        id: uniqid(),
         name: "OYO",
-        genre: "Love story",
+        genre: "Comedy",
         year: "2016",
         description: "Nice movie",
         rating: "4.5"
     },
     {
-        id: 12,
+        id: uniqid(),
         name: "Paytm",
-        genre: "Love story",
+        genre: "Kids",
         year: "2016",
         description: "Nice movie",
         rating: "4.5"
