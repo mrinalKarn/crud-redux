@@ -1,3 +1,8 @@
 .container { 
     grid-column: 2/3;
 }
+
+.post-container{
+    border: 1px solid black;
+    margin-bottom: 1%;
+}

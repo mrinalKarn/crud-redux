@@ -5,7 +5,7 @@ import { addData, editData } from './../action/action';
 import { useDispatch } from "react-redux";
 import { useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
-// Show value and add submit logic
+// Show value and add submit logic --done
 const Form = (props) => {
     const dispatch = useDispatch();
     const data = useSelector(state => state);
@@ -68,7 +68,12 @@ const Form = (props) => {
                 }
             })
         }
-    },[])
+    },[]) //[] means this will not run, by changing state of any component
+    // useEffect(()=>{}) means run with any change in state
+    // useEffect(()=>{},[abc]) means run with any change in abc componenent
+    // Really useEffect is Amazing, it has very powerfull
+    // It will completly replace all state life cycle method like componentDidMount,DidUpdate
+    // And also perform Async, operation, reallly amazing :) :)
 
     return (
         <div className="container">

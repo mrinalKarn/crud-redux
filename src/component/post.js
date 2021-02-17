@@ -13,13 +13,12 @@ const Post = (props) => {
     };
 
     return (
-        <div>
-            <p>{props.post.id}</p>
-            <p>{props.post.name}</p>
+        <div className="post-container">
+            <p><b>{props.post.name}</b></p>
             <p>{props.post.genre}</p>
-            <p>{props.post.year}</p>
-            <p>{props.description}</p>
-            <p>{props.rating}</p>
+            <small>{props.post.year}</small>
+            <p><i>{props.post.description}</i></p>
+            <p>{props.post.rating}</p>
             <Link to={{ pathname: '/form', query: { type: "EDIT", id: props.post.id } }}>
                 <button>Edit</button>
             </Link>
