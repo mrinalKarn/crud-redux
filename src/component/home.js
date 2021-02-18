@@ -1,4 +1,5 @@
 // Add home
+// Search
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 //import { connect } from 'react-redux'; not working
@@ -42,6 +43,8 @@ const Home = (props) => {
   // working Search logic
   // Not good working logic, just fine, giving anonymus data many time - see later
   // Integrating with logic ,but core logic not working
+
+  //Add a custom search logic
   const searchLogic = () => {
     setData([...data].filter(post => {
       return post.name.toLocaleLowerCase().includes(input);
@@ -50,7 +53,7 @@ const Home = (props) => {
 
   // Integrate sort ,search hook with useEffect and add onChange property in both
   useEffect(()=>{
-    searchLogic();
+    //searchLogic();
     //console.log(input);
     sortLogic();
   },[input,sort])
