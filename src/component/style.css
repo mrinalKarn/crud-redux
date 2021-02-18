@@ -6,3 +6,12 @@
     border: 1px solid black;
     margin-bottom: 1%;
 }
+
+.header-container{
+    margin:auto;
+    width: 50%;
+}
+
+.link{
+    margin-right: 5%;
+}

@@ -1,10 +1,18 @@
 // Done with empty state and then with some default state value
+
+import { act } from 'react-dom/test-utils';
+
 // Successfully checked the action creator, action, dispatch, reducer and store
 var uniqid = require('uniqid');
 
+const id1 = uniqid();
+const id2 = uniqid();
+const id3 = uniqid()
+
 const initialState = [
+
     {
-        id: uniqid(),
+        id: id1,
         name: "Attack On Titan",
         genre: "Action",
         year: "2017",
@@ -12,7 +20,7 @@ const initialState = [
         rating: "8"
     },
     {
-        id: uniqid(),
+        id: id2,
         name: "My Hero Academia",
         genre: "Thriller",
         year: "2016",
@@ -20,7 +28,7 @@ const initialState = [
         rating: "7"
     },
     {
-        id: uniqid(),
+        id: id3,
         name: "DeathNote",
         genre: "Kids",
         year: "2018",
@@ -29,45 +37,19 @@ const initialState = [
     }
 ]
 
-//   console.clear()
-//   const {createStore, combineReducers} = Redux;
-
-//   // Actions or the form
-//   const addData = (obj) => {
-//     return{
-//       type: 'ADD_DATA',
-//       payload : {
-//         data : obj
-//       }
-//     };
-//   };
-
-//   const editData = (id,obj) => {
-//     return{
-//       type: 'EDIT_DATA',
-//       payload : {
-//         id : id,
-//         data : obj
-//       }
-//     };
-//   };
-
-//   const deleteData = (id) => {
-//     return{
-//       type: 'DELETE_DATA',
-//       payload : {
-//         id : id
-//       }
-//     };
-//   };
 
 // Reducers
-const reducer = (state = initialState, action) => {
+const Reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_DATA':
             return state.concat([action.payload.data])
         case 'DELETE_DATA':
-            return state.filter((post) => post.id !== action.payload.id)
+            {
+                //console.log(state)
+                const deleteState = [...state].filter((post) => post.id !== action.payload.id);
+                //console.log(deleteState)
+                return deleteState;
+            }
         //update and edit data do later
         case 'EDIT_DATA':
             return state.filter((post) => post.id !== action.payload.id).concat([action.payload.data])
@@ -76,50 +58,4 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-//   // Store
-//   const store = createStore(postReducer);
-
-//   // Dispatch
-//   var object_2 = {
-//     id : 2,
-//     name : "the great gatsby",
-//     genre : "Love story",
-//     year : "2016",
-//     description : "Nice movie",
-//     rating : "4.5"
-//   }
-
-//   var object_1 = {
-//     id : 1,
-//     name : "the great gatsby",
-//     genre : "Love story",
-//     year : "2016",
-//     description : "Nice movie",
-//     rating : "4.5"
-//   }
-
-//   var obj_2_new = {
-//     id : 2,
-//     name : "chutiya gatsby",
-//     genre : "Love story",
-//     year : "2016",
-//     description : "Nice movie",
-//     rating : "4.5"
-//   }
-
-//   //Initial State
-//   console.log(store.getState());
-
-//   // Successfully added the data
-//   store.dispatch(addData(object_2)); 
-//   store.dispatch(addData(object_1))
-//   console.log(store.getState()) 
-
-//   //Successfully Deleted the data
-//   store.dispatch(deleteData(1));
-//   console.log(store.getState())
-
-//   //Updating the data
-//   store.dispatch(editData(2,obj_2_new));
-//   console.log(store.getState())
-export default reducer;
+export default Reducer;

@@ -1,5 +1,8 @@
 // Add home
 // Search
+
+// Correct your search logic
+
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 //import { connect } from 'react-redux'; not working
@@ -17,7 +20,7 @@ const Home = (props) => {
   const [input,setInput] = useState('');
   const [data,setData] = useState(dataStore);
   
-  //console.log(data); //Error - still not updating data in home while data get updated in form and store
+  //console.log(dataStore); //Error - still not updating data in home while data get updated in form and store
 
   // Working Sort logic
   // And integrating with hooks
@@ -40,23 +43,38 @@ const Home = (props) => {
 
   }
 
+  function isContains(word,key){
+  
+    if(key.length>word.length)return false;
+    for(let i=0;i<word.length;i++){
+      let mismatch=false;
+      for(let j=0;j<key.length && !mismatch;j++){
+        if(word.charAt(i+j)!==key.charAt(j))
+            mismatch=true; 
+      }
+      if(!mismatch)return true;
+    }
+    return false;
+  }
+
   // working Search logic
   // Not good working logic, just fine, giving anonymus data many time - see later
   // Integrating with logic ,but core logic not working
 
   //Add a custom search logic
   const searchLogic = () => {
-    setData([...data].filter(post => {
-      return post.name.toLocaleLowerCase().includes(input);
+    setData([...dataStore].filter((item)=>{
+      return isContains(item.name.toLowerCase(),input.toLowerCase());
     }));    
   }
 
   // Integrate sort ,search hook with useEffect and add onChange property in both
   useEffect(()=>{
-    //searchLogic();
+    setData(dataStore) //Changing data on changing on datastore, missed this point so delete not working previously
+    searchLogic();
     //console.log(input);
-    sortLogic();
-  },[input,sort])
+    sortLogic();   // Sort logic
+  },[input,sort,dataStore])
 
   return (
     <div className="container">

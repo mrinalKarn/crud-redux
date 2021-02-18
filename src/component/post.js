@@ -8,12 +8,12 @@ const Post = (props) => {
 
     var deletePost = (e) => {
         e.preventDefault();
-        //console.log(props.post.id);
         dispatch(deleteData(props.post.id));
     };
 
     return (
         <div className="post-container">
+            <small>{props.post.id}</small>
             <p><b>{props.post.name}</b></p>
             <p>{props.post.genre}</p>
             <small>{props.post.year}</small>
